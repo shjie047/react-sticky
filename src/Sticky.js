@@ -87,7 +87,7 @@ export default class Sticky extends Component {
       : {
           position: "fixed",
           top:
-            bottomDifference > 0
+            this.props.top !== undefined ? this.props.top ? bottomDifference > 0
               ? this.props.relative
                 ? parent.offsetTop - parent.offsetParent.scrollTop
                 : 0
