@@ -9,8 +9,6 @@ export default class Sticky extends Component {
     relative: PropTypes.bool,
     children: PropTypes.func.isRequired,
     top: PropTypes.number,
-    onSticky: PropTypes.func,
-    onUnSticky: PropTypes.func,
     className: PropTypes.string
   };
 
@@ -100,20 +98,8 @@ export default class Sticky extends Component {
           width: placeholderClientRect.width
         };
 
-    const className = this.props.className + (!isSticky ? '' : ' fixed')
-
     if (!this.props.disableHardwareAcceleration) {
       style.transform = "translateZ(0)";
-    }
-
-    if (isSticky) {
-      if (this.props.onSticky) {
-        this.props.onSticky()
-      }
-    } else {
-      if (this.props.onUnSticky) {
-        this.props.onUnSticky()
-      }
     }
 
     this.setState({
@@ -123,7 +109,6 @@ export default class Sticky extends Component {
       distanceFromBottom,
       calculatedHeight,
       style,
-      className
     });
   };
 
@@ -136,7 +121,6 @@ export default class Sticky extends Component {
         distanceFromBottom: this.state.distanceFromBottom,
         calculatedHeight: this.state.calculatedHeight,
         style: this.state.style,
-        className: this.state.className
       }),
       {
         ref: content => {
