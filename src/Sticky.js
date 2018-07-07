@@ -122,7 +122,8 @@ export default class Sticky extends Component {
       distanceFromTop,
       distanceFromBottom,
       calculatedHeight,
-      style
+      style,
+      className
     });
   };
 
@@ -135,7 +136,7 @@ export default class Sticky extends Component {
         distanceFromBottom: this.state.distanceFromBottom,
         calculatedHeight: this.state.calculatedHeight,
         style: this.state.style,
-        className: className
+        className: this.state.className
       }),
       {
         ref: content => {
