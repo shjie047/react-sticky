@@ -9,7 +9,8 @@ export default class Sticky extends Component {
     relative: PropTypes.bool,
     children: PropTypes.func.isRequired,
     top: PropTypes.number,
-    onSticky: PropTypes.func
+    onSticky: PropTypes.func,
+    onUnSticky: PropTypes.func
   };
 
   static defaultProps = {
@@ -105,6 +106,10 @@ export default class Sticky extends Component {
     if (isSticky) {
       if (this.props.onSticky) {
         this.props.onSticky()
+      }
+    } else {
+      if (this.props.onUnSticky) {
+        this.props.onUnSticky()
       }
     }
 
