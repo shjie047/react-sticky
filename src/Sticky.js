@@ -7,7 +7,9 @@ export default class Sticky extends Component {
     topOffset: PropTypes.number,
     bottomOffset: PropTypes.number,
     relative: PropTypes.bool,
-    children: PropTypes.func.isRequired
+    children: PropTypes.func.isRequired,
+    top: PropTypes.number,
+    onSticky: PropTypes.func
   };
 
   static defaultProps = {
@@ -98,6 +100,12 @@ export default class Sticky extends Component {
 
     if (!this.props.disableHardwareAcceleration) {
       style.transform = "translateZ(0)";
+    }
+
+    if (isSticky) {
+      if (this.props.onSticky) {
+        this.props.onSticky()
+      }
     }
 
     this.setState({
